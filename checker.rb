@@ -39,13 +39,6 @@ def check_words(text)
       word+=i
     end
   end
-  ignored_words.each do |ignored_word|
-    words.each do |word|
-      if word.casecmp?(ignored_word)
-        words.delete word
-      end
-    end
-  end
+  ignored_words.each { |ignored_word| words.delete_if{|word| word.casecmp?(ignored_word) }}
    words
 end
-
