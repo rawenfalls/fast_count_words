@@ -28,8 +28,9 @@ end
 def check_words(entered_words, words )
   ignored_words = ["на","под","за","из","по","об","над","около","при","перед","через","от","но","хотя","чтобы","зато","как","да","или","либо"]
   word=""
+  s = " ,.!?"
   entered_words.each_char do |i|
-    if (i == " ") || (i == ",") || (i == ".") || (i == "?") || (i == "!")
+    if s.include?(i)
       words << "#{word}"if word.size >=2
       word.clear
     else
