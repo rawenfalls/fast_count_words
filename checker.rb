@@ -27,21 +27,14 @@ end
 
 def check_words(entered_words, words )
   ignored_words = ["на","под","за","из","по","об","над","около","при","перед","через","от","но","хотя","чтобы","зато","как","да","или","либо"]
-  botw=0
-  eotw=0
   word=""
-  for i in 1..entered_words.size
-    if (entered_words[i] == " ") || (entered_words[i] == ",") || (entered_words[i] == ".") || (entered_words[i] == "?") || (entered_words[i] == "!")
-      botw=eotw
-      eotw=i
-      loop do
-        word+= entered_words[botw]
-        botw+=1
-        break if botw==eotw
-      end
+  entered_words.each_char do |i|
+    if (i == " ") || (i == ",") || (i == ".") || (i == "?") || (i == "!")
       word.strip!
       words << "#{word}"if word.size >=2
       word.clear
+    else
+      word+=i
     end
   end
   ignored_words.each { |ignored_word| words.delete_if{ |word| word =~ /^#{ignored_word}$/i}}
