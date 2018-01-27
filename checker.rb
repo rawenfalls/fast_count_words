@@ -25,9 +25,10 @@ def check_answer
   end
 end
 
-def check_words(entered_words, words )
+def check_words(entered_words)
   ignored_words = ["на","под","за","из","по","об","над","около","при","перед","через","от","но","хотя","чтобы","зато","как","да","или","либо"]
   word=""
+  words=[]
   entered_words.each_char do |i|
     if " ,.!?".include?(i)
       words << word if word.size >1
@@ -37,5 +38,6 @@ def check_words(entered_words, words )
     end
   end
   ignored_words.each { |ignored_word| words.delete_if{ |word| word =~ /^#{ignored_word}$/i}}
+  return words
 end
 
