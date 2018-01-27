@@ -26,7 +26,7 @@ def check_answer
 end
 
 def check_words(text)
-  ignored_words = %w[на под за из по об над около при перед через от но хотя чтобы зато как да или либо"]
+  ignored_words = %w[на под за из по об над около при перед через от но хотя чтобы зато как да или либо]
   word=""
   words=[]
   text.each_char do |i|
