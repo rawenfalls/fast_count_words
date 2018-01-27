@@ -1,3 +1,15 @@
+def check_nil
+  loop do
+    entered_words = gets.chomp
+    if entered_words==""
+      puts "!!!НЕКОРЕКТНЫЙ ВВОД!!!"
+      puts "введите фразу, для подсчёта кол-во слов"
+    else
+      return entered_words
+    end
+  end
+end
+
 def check_answer
   quit = false
   until quit
@@ -14,13 +26,11 @@ def check_answer
 end
 
 def check_words(entered_words, words )
-
   ignored_words = ["на","под","за","из","по","об","над","около","при","перед","через","от","но","хотя","чтобы","зато","как","да","или","либо"]
-  i=0
   botw=0
   eotw=0
   word=""
-  loop do
+  for i in 1..entered_words.size
     if (entered_words[i] == " ") || (entered_words[i] == ",") || (entered_words[i] == ".") || (entered_words[i] == "?") || (entered_words[i] == "!")
       botw=eotw
       eotw=i
@@ -30,13 +40,9 @@ def check_words(entered_words, words )
         break if botw==eotw
       end
       word.strip!
-      if word.size >=2
-      words << "#{word}"
-      end
+      words << "#{word}"if word.size >=2
       word.clear
     end
-    i+=1
-    break if entered_words[i]==nil
   end
   ignored_words.each { |ignored_word| words.delete_if{ |word| word =~ /^#{ignored_word}$/i}}
 end
