@@ -30,7 +30,6 @@ def check_words(entered_words, words )
   word=""
   entered_words.each_char do |i|
     if (i == " ") || (i == ",") || (i == ".") || (i == "?") || (i == "!")
-      word.strip!
       words << "#{word}"if word.size >=2
       word.clear
     else
