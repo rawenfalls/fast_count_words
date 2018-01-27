@@ -38,6 +38,6 @@ def check_words(entered_words)
     end
   end
   ignored_words.each { |ignored_word| words.delete_if{ |word| word =~ /^#{ignored_word}$/i}}
-  return words
+   words
 end
 
