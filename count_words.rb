@@ -7,10 +7,8 @@
 require "./checker.rb"
 
 loop do
-  puts "введите фразу, для подсчёта кол-во слов"
   text = check_nil + " "
   words = check_words(text)
   puts "кол-во слов в фразе = #{words.size}" , words
-  puts "если хотите подсчитать кол-во слов в новой фразе введите y, yes, д, да, если хотите закончить программу введите n, no, н, нет"
   check_answer
 end

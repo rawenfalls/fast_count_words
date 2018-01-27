@@ -1,4 +1,5 @@
 def check_nil
+  puts "введите фразу, для подсчёта кол-во слов"
   loop do
     entered_words = gets.chomp
     if entered_words==""
@@ -12,6 +13,7 @@ end
 
 def check_answer
   quit = false
+  puts "если хотите подсчитать кол-во слов в новой фразе введите y, yes, д, да, если хотите закончить программу введите n, no, н, нет"
   until quit
     answer = gets.chomp.downcase
     yes_or_no = [["y", "yes", "д", "да"], ["n", "no", "н", "нет"]]
@@ -32,12 +34,18 @@ def check_words(text)
   text.each_char do |i|
     if " ,.!?".include?(i)
       words << word if word.size >1
-      word.clear
+      word=""
     else
       word+=i
     end
   end
-  ignored_words.each { |ignored_word| words.delete_if{ |word| word =~ /^#{ignored_word}$/i}}
+  ignored_words.each do |ignored_word|
+    words.each do |word|
+      if word.casecmp?(ignored_word)
+        words.delete word
+      end
+    end
+  end
    words
 end
 
