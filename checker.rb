@@ -30,7 +30,7 @@ def check_words(entered_words, words )
   word=""
   entered_words.each_char do |i|
     if " ,.!?".include?(i)
-      words << "#{word}"if word.size >=2
+      words << word if word.size >1
       word.clear
     else
       word+=i
