@@ -27,8 +27,7 @@ def check_answer
   end
 end
 
-def check_words(text)
-  ignored_words = %w[на под за из по об над около при перед через от но хотя чтобы зато как да или либо]
+def count_words(text)
   word=""
   words=[]
   text.each_char do |i|
@@ -39,6 +38,11 @@ def check_words(text)
       word+=i
     end
   end
+  words
+end
+
+def check_words(words)
+  ignored_words = %w[на под за из по об над около при перед через от но хотя чтобы зато как да или либо]
   ignored_words.each { |ignored_word| words.delete_if{|word| word.casecmp?(ignored_word) }}
-   words
+  words
 end
