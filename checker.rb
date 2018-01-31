@@ -41,7 +41,7 @@ def count_words(text)
   words
 end
 
-def ignored_words?(word)
+def ignored_word?(word)
   ignored_words = %w[на под за из по об над около при перед через от но хотя чтобы зато как да или либо]
   !ignored_words.any? { |ignored_word| word.casecmp?(ignored_word) }
 end
