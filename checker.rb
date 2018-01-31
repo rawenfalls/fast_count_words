@@ -32,7 +32,7 @@ def count_words(text)
   words=[]
   text.each_char do |i|
     if " ,.!?".include?(i)
-      words << word if ignored_word?(word)
+      words << word unless ignored_word?(word)
       word=""
     else
       word+=i
@@ -43,6 +43,7 @@ end
 
 def ignored_word?(word)
   ignored_words = %w[на под за из по об над около при перед через от но хотя чтобы зато как да или либо]
-  (word.size > 1) && !ignored_words.any? { |ignored_word| word.casecmp?(ignored_word) } || word.casecmp?("я")
+  words_in_one_letters = %w[а б в ж и к о с у я]
+  !words_in_one_letters.any? { |words_in_one_letter| word.casecmp?(words_in_one_letter) } if word.size == 1  || ignored_words.any? { |ignored_word| word.casecmp?(ignored_word) }
 end
 
