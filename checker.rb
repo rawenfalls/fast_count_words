@@ -43,7 +43,5 @@ end
 
 def check_words(word)
   ignored_words = %w[на под за из по об над около при перед через от но хотя чтобы зато как да или либо]
-  i = true
-  ignored_words.each { |ignored_word| i = false if word.casecmp?(ignored_word)  }
-  i
+  ignored_words.each { |ignored_word| return false if word.casecmp?(ignored_word)  }
 end
