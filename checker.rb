@@ -46,8 +46,8 @@ def count_words(text)
   word=""
   words=[]
   text.each_char do |i|
-    if " ,.!?".include?(i)
-      words << word unless ignored_word?(word)
+    if " ,.!?[]".include?(i)
+      words << word.strip unless ignored_word?(word)
       word=""
     else
       word+=i
@@ -59,8 +59,9 @@ end
 def ignored_word?(word)
   ignored_words = %w[на под за из по об над около при перед через от но хотя чтобы зато как да или либо]
   one_letter_words = %w[а б в ж и к о с у я]
-
   case
+    when word.strip == ""
+      return true
     when word.nil?
     when word.to_i != 0
     when word.size == 1
