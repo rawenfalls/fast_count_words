@@ -46,7 +46,7 @@ def count_words(text)
   word=""
   words=[]
   text.each_char do |i|
-    if " ,.!?[]".include?(i)
+    if " ,.!?[]-–()»«;:…".include?(i)
       words << word.strip unless ignored_word?(word)
       word=""
     else

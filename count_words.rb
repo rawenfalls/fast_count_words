@@ -8,6 +8,6 @@ require "./checker.rb"
 
 loop do
   words = count_words(check_nil)
-  puts "кол-во слов в фразе = #{words.size}" #, words
+  puts "кол-во слов в фразе = #{words.size}" , words
   check_answer
 end
