@@ -1,7 +1,7 @@
 def check_nil
   puts "введите фразу, для подсчёта кол-во слов"
   loop do
-    entered_words = gets.chomp
+    entered_words = gets.chomp.strip
     if entered_words==""
       puts "!!!НЕКОРЕКТНЫЙ ВВОД!!!"
       puts "введите фразу, для подсчёта кол-во слов"
@@ -46,6 +46,7 @@ def ignored_word?(word)
   one_letter_words = %w[а б в ж и к о с у я]
   if word.size == 1
     !one_letter_words.any? { |letter| word.casecmp?(letter) }
+  elsif word == nil
   else
     ignored_words.any? { |ignored_word| word.casecmp?(ignored_word) }
   end
