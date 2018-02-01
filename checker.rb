@@ -48,8 +48,7 @@ def ignored_word?(word)
     when word.size == 1
       !one_letter_words.any? { |letter| word.casecmp?(letter) }
     when word == nil
-    else
-      ignored_words.any? { |ignored_word| word.casecmp?(ignored_word) }
+    else ignored_words.any? { |ignored_word| word.casecmp?(ignored_word) }
   end
 end
 
