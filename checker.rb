@@ -45,9 +45,9 @@ def ignored_word?(word)
   ignored_words = %w[на под за из по об над около при перед через от но хотя чтобы зато как да или либо]
   one_letter_words = %w[а б в ж и к о с у я]
   case
+    when word == nil
     when word.size == 1
       !one_letter_words.any? { |letter| word.casecmp?(letter) }
-    when word == nil
     else ignored_words.any? { |ignored_word| word.casecmp?(ignored_word) }
   end
 end
