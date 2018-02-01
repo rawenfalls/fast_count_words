@@ -1,12 +1,27 @@
+# def check_nil
+#   puts "введите фразу, для подсчёта кол-во слов"
+#   loop do
+#     entered_words = gets.chomp.strip
+#     if entered_words==""
+#       puts "!!!НЕКОРЕКТНЫЙ ВВОД!!!"
+#       puts "введите фразу, для подсчёта кол-во слов"
+#     else
+#       return entered_words + " "
+#     end
+#   end
+# end
+
 def check_nil
+  current_path = File.dirname(__FILE__)
+  text = File.new(current_path + "/война_и_мир.txt")
   puts "введите фразу, для подсчёта кол-во слов"
   loop do
-    entered_words = gets.chomp.strip
+    entered_words = text.read
     if entered_words==""
       puts "!!!НЕКОРЕКТНЫЙ ВВОД!!!"
       puts "введите фразу, для подсчёта кол-во слов"
     else
-      return entered_words
+      return entered_words + " "
     end
   end
 end
@@ -48,7 +63,6 @@ def ignored_word?(word)
   case
     when word.nil?
     when word.to_i != 0
-      return true
     when word.size == 1
       !one_letter_words.any? { |letter| word.casecmp?(letter) }
     else ignored_words.any? { |ignored_word| word.casecmp?(ignored_word) }
