@@ -1,34 +1,41 @@
-# def check_nil
-#   puts "введите фразу, для подсчёта кол-во слов"
-#   loop do
-#     entered_words = gets.chomp.strip
-#     if entered_words==""
-#       puts "!!!НЕКОРЕКТНЫЙ ВВОД!!!"
-#       puts "введите фразу, для подсчёта кол-во слов"
-#     else
-#       return entered_words + " "
-#     end
-#   end
-# end
+def activate_count_words
+  loop do
+    check_nil
+    check_answer
+  end
+end
 
 def check_nil
-  current_path = File.dirname(__FILE__)
-  text = File.new(current_path + "/война_и_мир.txt")
-  puts "введите фразу, для подсчёта кол-во слов"
+  puts "введите фразу"
   loop do
-    entered_words = text.read
+    entered_words = gets.chomp.strip
     if entered_words==""
       puts "!!!НЕКОРЕКТНЫЙ ВВОД!!!"
-      puts "введите фразу, для подсчёта кол-во слов"
+      puts "попробуйте ещё раз"
     else
-      return entered_words + " "
+      return count_words(entered_words + " ")
     end
   end
 end
 
+# def check_nil
+#   current_path = File.dirname(__FILE__)
+#   text = File.new(current_path + "/война_и_мир.txt")
+#   puts "введите фразу"
+#   loop do
+#     entered_words = text.read
+#     if entered_words==""
+#       puts "!!!НЕКОРЕКТНЫЙ ВВОД!!!"
+#       puts "попробуйте ещё раз"
+#     else
+#       return count_words(entered_words + " ")
+#     end
+#   end
+# end
+
 def check_answer
   quit = false
-  puts "если хотите подсчитать кол-во слов в новой фразе введите y, yes, д, да, если хотите закончить программу введите n, no, н, нет"
+  puts "Повторить? (y/n)"
   until quit
     answer = gets.chomp.downcase
     yes_or_no = [["y", "yes", "д", "да"], ["n", "no", "н", "нет"]]
@@ -37,7 +44,8 @@ def check_answer
     elsif yes_or_no.assoc("n").include?(answer)
       abort
     else
-      puts "некоректный ввод, попробуйте ещё раз"
+      puts "!!!НЕКОРЕКТНЫЙ ВВОД!!!"
+      puts "попробуйте ещё раз"
     end
   end
 end
@@ -53,7 +61,7 @@ def count_words(text)
       word+=i
     end
   end
-  words
+  puts "кол-во слов в фразе = #{words.size}", words
 end
 
 def ignored_word?(word)
