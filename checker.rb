@@ -2,7 +2,7 @@ def activate_count_words
   loop do
     print "Введите фразу: "
     phrase = gets.chomp.strip
-    words = count_words(phrase)
+    words = count_words(phrase + " ")
     puts "Количество слов в фразе = #{words.size}"
     break unless check_answer
   end
