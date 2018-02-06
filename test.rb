@@ -9,10 +9,6 @@ def activate_count_words_test
     puts "Количество слов в фразе = #{words.size}"
 end
 
-
-
 Benchmark.bm(7) do |x|
     x.report { activate_count_words_test }
 end
-
-
