@@ -1,4 +1,5 @@
-require "./checker.rb"
+require './checker.rb'
+require 'benchmark'
 
 def activate_count_words_test
     current_path = File.dirname(__FILE__)
@@ -8,8 +9,6 @@ def activate_count_words_test
     puts "Количество слов в фразе = #{words.size}"
 end
 
-
-beginning_time = Time.now
- activate_count_words_test
-end_time = Time.now
-puts "Time elapsed #{(end_time - beginning_time)} seconds"
+Benchmark.bm(7) do |x|
+  x.report { activate_count_words_test }
+end
